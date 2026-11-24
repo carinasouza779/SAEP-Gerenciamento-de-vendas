@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Gerenciamento de Vendas</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/script.js" defer></script>
+</head>
+<body>
+  <header class="topo">
+    <div class="container">
+      <p class="marca">VENDAS<span>.</span></p>
+      <p class="subtitulo">Painel de gerenciamento comercial</p>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="resumo">
+      <div>
+        <p class="texto-menor">Visão geral</p>
+        <h1>Gerenciamento de vendas</h1>
+      </div>
+      <div class="indicadores">
+        <div class="indicador"><strong id="totalVendas">0</strong><span>vendas</span></div>
+        <div class="indicador"><strong id="valorTotal">R$ 0,00</strong><span>total vendido</span></div>
+      </div>
+    </section>
+
+    <section class="painel">
+      <div class="cabecalho-painel">
+        <div>
+          <p class="texto-menor">Lançamento</p>
+          <h2 id="tituloFormulario">Registrar venda</h2>
+        </div>
+      </div>
+
+      <form id="formVenda">
+        <input type="hidden" id="vendaId">
+        <div class="campos">
+          <label>Nome do cliente
+            <input type="text" id="cliente" placeholder="Ex.: Maria Silva" required>
+          </label>
+          <label>Produto vendido
+            <input type="text" id="produto" placeholder="Ex.: Mouse" required>
+          </label>
+          <label>Quantidade
+            <input type="number" id="quantidade" min="1" step="1" placeholder="1" required>
+          </label>
+          <label>Valor unitário (R$)
+            <input type="number" id="valor_unitario" min="0" step="0.01" placeholder="0,00" required>
+          </label>
+          <label>Data da venda
+            <input type="date" id="data_venda" required>
+          </label>
+        </div>
+        <div class="acoes-formulario">
+          <button type="submit" id="botaoSalvar">Registrar venda</button>
+          <button type="button" id="botaoCancelar" class="secundario oculto">Cancelar edição</button>
+        </div>
+      </form>
+      <p id="mensagem" class="mensagem" role="status"></p>
+    </section>
+
+    <section class="painel">
+      <div class="cabecalho-painel">
+        <div>
+          <p class="texto-menor">Histórico</p>
+          <h2>Vendas registradas</h2>
+        </div>
+        <button type="button" id="botaoAtualizar" class="secundario">Atualizar lista</button>
+      </div>
+
+      <div class="tabela-responsiva">
+        <table>
+          <thead>
+            <tr>
+              <th>ID</th><th>Data</th><th>Cliente</th><th>Produto</th>
+              <th>Qtd.</th><th>Valor unit.</th><th>Total</th><th>Ações</th>
+            </tr>
+          </thead>
+          <tbody id="listaVendas">
+            <tr><td colspan="8" class="vazio">Carregando vendas...</td></tr>
+          </tbody>
+        </table>
+      </div>
+    </section>
+  </main>
+
+  <footer><p>Sistema de gerenciamento de vendas • Projeto de estudo CRUD</p></footer>
+</body>
+</html>
